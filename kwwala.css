@@ -1,23 +1,17 @@
-body {
-    background: #282828;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    
+:root {
+    --bg-color: #282828;
+    --text-color: white;
+    --green: #3c9;
 }
 
-div {
-    text-align: left;
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: "Montserrat", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
-}
-
-a {
-    color: blue;
 }
 
 ul {
@@ -25,19 +19,22 @@ ul {
     padding-left: 20px;
 }
 
-li {
-    list-style-type: none;
+li::marker {
+    font-size: 0.75em;
 }
 
-li a {
-    text-decoration: none;
-    color: white;
+a {
+    color: var(--text-color);
     margin: 0;
     padding: 0;
 }
 
-li a:hover {
-    color: #3c9;
+h1 a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--green);
     text-decoration: underline;
 }
 
