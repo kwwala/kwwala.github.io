@@ -1,47 +1,168 @@
+/* = Variables de tema = */
 :root {
-    --bg-color: #282828;
-    --text-color: white;
-    --green: #3c9;
+  --bg: #f6f6f6;
+  --fg: #222;
+  --green: #0c9;
+  --green-alt: #3c9;
+  --btn-bg: #8888883f;
+}
+
+.darkmode {
+  --bg: #222;
+  --fg: #f6f6f6;
+  --green: #3c9;
+  --green-alt: #063;
+  --btn-bg: #8888881f;
+}
+
+/* = Reset básico e body = */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: var(--bg-color);
-    color: var(--text-color);
-    font-family: "Montserrat", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Montserrat", sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* = Tipografia = */
+h1 {
+  display: inline-block;
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    margin: 0;
+  margin: 0;
 }
 
+/* = Listas e links = */
 ul {
-    margin: 0;
-    padding-left: 20px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
 }
 
 li::marker {
-    font-size: 0.75em;
+  font-size: 0.75em;
 }
 
 a {
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
+  color: var(--fg);
+  transition: all 0.2s, text-shadow 0.2s, font-weight 0.25s;
+  /* margin/padding desnecessários removidos */
 }
 
 h1 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    color: var(--green);
-    text-decoration: underline;
+  font-weight: bold;
+  color: var(--green);
+  border-radius: 4px;
+  padding-left: 5px;
+  /* Corrigido: color-mix(in srgb, ...) retorna uma cor válida */
+  text-shadow: 0 0 18px color-mix(in srgb, var(--green) 25%, transparent);
 }
 
+/* = Fontes alternativas e efeitos = */
 .altfont {
-    font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Montserrat Alternates", sans-serif;
 }
 
-.italic {
-    font-style: italic;
+/* = Efeito de texto com shimmer = */
+.text-effect {
+  background: linear-gradient(90deg, var(--green), var(--green-alt));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
+  text-shadow: 0 0 6px rgba(0,0,0,0.06);
+  transition: transform 0.5s, text-shadow 0.2s;
+}
+
+.text-effect:hover {
+  transform: translateY(-2px);
+  animation-duration: 1.5s;
+  /* Corrigido: color-mix(in srgb, ...) retorna uma cor válida */
+  text-shadow: 0 0 18px color-mix(in srgb, var(--green) 25%, transparent);
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 0 rgba(0,0,0,0));
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.05));
+  }
+}
+
+/* = Hover para textos mais bold = */
+.text-hover-bolder {
+  transition: font-weight 0.25s;
+}
+
+.text-hover-bolder:hover {
+  font-weight: bold;
+}
+
+/* = Main container = */
+main {
+  margin: auto;
+  max-width: 680px;
+  padding: 20px;
+}
+
+/* = Botão de troca de tema = */
+#theme-switch {
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--btn-bg);
+  box-shadow: 0 3px 12px #0002;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+#theme-switch:hover {
+  background: var(--green);
+  box-shadow: 0 6px 18px #0003;
+}
+
+#theme-switch svg {
+  fill: var(--fg);
+  transition: fill 0.2s;
+}
+
+#theme-switch svg:first-child {
+  display: inline;
+}
+
+#theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+  display: inline;
 }
