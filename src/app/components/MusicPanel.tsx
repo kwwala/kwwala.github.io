@@ -18,6 +18,44 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
       Record<string, boolean>
     >({});
 
+    if (SONGS.length === 0) {
+      return (
+        <div ref={ref} className={className}>
+          <p className="text-sm leading-relaxed text-zinc-300">
+            hey!! i'm working on adding my music here. (that's why you don't see
+            anything yet...)
+          </p>
+          <br />
+          <p className="text-sm leading-relaxed text-zinc-300">
+            in the meantime, you can check out my{" "}
+            <a
+              href="https://soundcloud.com/imkwwala"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block cursor-pointer text-sm text-zinc-500 transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:pl-2 hover:text-[#3c9]"
+            >
+              soundcloud
+            </a>
+            !
+          </p>
+          {/* <br />
+          <p className="text-sm leading-relaxed text-zinc-300">
+            (psst.. if you're curious about the process or want to chat about
+            music, feel free to reach out to me on{" "}
+            <a
+              href="https://discord.com"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block cursor-pointer text-sm text-zinc-500 transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:pl-2 hover:text-[#3c9]"
+            >
+              discord
+            </a>
+            ...
+          </p> */}
+        </div>
+      );
+    }
+
     return (
       <div ref={ref} className={className}>
         <div className="space-y-3">
@@ -28,7 +66,6 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
             const displayRemix = remixText || song.artist;
             const showRemixInHeader =
               displayRemix.trim().toLowerCase() !== "kwwala";
-
             return (
               <article
                 key={song.id}
