@@ -1,23 +1,23 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from '@/App'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "@/App";
+import "./index.css";
 
 const restoreGithubPagesRoute = () => {
-  const currentUrl = new URL(window.location.href)
-  const redirectedPath = currentUrl.searchParams.get('__gh_route')
+  const currentUrl = new URL(window.location.href);
+  const redirectedPath = currentUrl.searchParams.get("__gh_route");
 
   if (!redirectedPath) {
-    return
+    return;
   }
 
-  window.history.replaceState(null, '', redirectedPath)
-}
+  window.history.replaceState(null, "", redirectedPath);
+};
 
-restoreGithubPagesRoute()
+restoreGithubPagesRoute();
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
   </StrictMode>,
-)
+);

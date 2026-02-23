@@ -30,22 +30,13 @@ function App() {
       <div className="relative z-10 w-full max-w-3xl font-mono">
         {isNotFound ? (
           <section className="m-auto w-fit">
-            <p className="text-xs tracking-[0.2em] text-zinc-500">
-              error
-            </p>
+            <p className="text-xs tracking-[0.2em] text-zinc-500">error</p>
             <h1 className="text-3xl font-semibold tracking-[0.12em] text-[#3c9] sm:text-4xl">
               404
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-zinc-300">
               we couldn't find the page you're looking for.
             </p>
-            {/* <button
-              type="button"
-              onClick={() => setActiveTab("home")}
-              className="mt-6 border border-[#3c9]/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#3c9] transition-colors hover:bg-[#3c9]/10"
-            >
-              voltar para home
-            </button> */}
             <p className="mt-2 text-sm leading-relaxed text-zinc-300">
               how about{" "}
               <a

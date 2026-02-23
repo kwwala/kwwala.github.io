@@ -14,9 +14,9 @@ type MusicPanelProps = {
 export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
   ({ className }, ref) => {
     const [openSongId, setOpenSongId] = useState<string | null>(null);
-    const [activatedSongIds, setActivatedSongIds] = useState<Record<string, boolean>>(
-      {},
-    );
+    const [activatedSongIds, setActivatedSongIds] = useState<
+      Record<string, boolean>
+    >({});
 
     return (
       <div ref={ref} className={className}>
@@ -86,7 +86,9 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
                     {isActivated && (
                       <div
                         className={`border-t border-white/10 px-4 pb-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
-                          isOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                          isOpen
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-3 opacity-0"
                         }`}
                       >
                         <div className="mt-4 grid gap-4 sm:grid-cols-[10.5rem_1fr]">
@@ -104,7 +106,10 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
                               <h3 className="text-base font-bold text-zinc-100">
                                 {song.title}
                                 {remixText && (
-                                  <span className="text-zinc-400"> {remixText}</span>
+                                  <span className="text-zinc-400">
+                                    {" "}
+                                    {remixText}
+                                  </span>
                                 )}
                               </h3>
                               <p className="text-xs tracking-[0.12em] text-[#3c9]">

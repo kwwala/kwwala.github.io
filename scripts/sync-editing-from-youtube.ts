@@ -104,7 +104,7 @@ const resolveThumbnailUrl = (thumbnails?: ThumbnailSet): string | null => {
   );
 };
 
-const chunk = <T,>(items: T[], size: number): T[][] => {
+const chunk = <T>(items: T[], size: number): T[][] => {
   const chunks: T[][] = [];
 
   for (let i = 0; i < items.length; i += size) {
@@ -114,7 +114,10 @@ const chunk = <T,>(items: T[], size: number): T[][] => {
   return chunks;
 };
 
-const parsePositiveInteger = (value: string | undefined, fallback: number): number => {
+const parsePositiveInteger = (
+  value: string | undefined,
+  fallback: number,
+): number => {
   const parsed = Number.parseInt((value ?? "").trim(), 10);
 
   if (!Number.isFinite(parsed) || parsed <= 0) {
@@ -143,7 +146,9 @@ const fetchAllPlaylistItems = async (
   let pageToken: string | undefined;
 
   do {
-    const url = new URL("https://youtube.googleapis.com/youtube/v3/playlistItems");
+    const url = new URL(
+      "https://youtube.googleapis.com/youtube/v3/playlistItems",
+    );
     url.searchParams.set("part", "snippet,contentDetails");
     url.searchParams.set("maxResults", "50");
     url.searchParams.set("playlistId", playlistId);
@@ -223,7 +228,8 @@ const fetchChannelMeta = async (
 
       result.set(id, {
         name: item.snippet?.title?.trim() || "Unknown channel",
-        avatarUrl: resolveThumbnailUrl(item.snippet?.thumbnails) ?? FALLBACK_AVATAR_URL,
+        avatarUrl:
+          resolveThumbnailUrl(item.snippet?.thumbnails) ?? FALLBACK_AVATAR_URL,
       });
     }
   }
@@ -294,7 +300,11 @@ const buildCreators = (
 
 const writeSnapshot = async (snapshot: EditingSnapshot): Promise<void> => {
   await mkdir(dirname(SNAPSHOT_PATH), { recursive: true });
-  await writeFile(SNAPSHOT_PATH, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
+  await writeFile(
+    SNAPSHOT_PATH,
+    `${JSON.stringify(snapshot, null, 2)}\n`,
+    "utf8",
+  );
 };
 
 const run = async (): Promise<void> => {
@@ -319,7 +329,9 @@ const run = async (): Promise<void> => {
     throw new Error("Playlist returned no valid videos.");
   }
 
-  const uniqueChannelIds = [...new Set(flatVideos.map((video) => video.channelId))];
+  const uniqueChannelIds = [
+    ...new Set(flatVideos.map((video) => video.channelId)),
+  ];
   const channelMeta = await fetchChannelMeta(uniqueChannelIds, apiKey);
   const creators = buildCreators(
     flatVideos,

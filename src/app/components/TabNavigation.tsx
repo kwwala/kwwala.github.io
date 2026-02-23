@@ -41,7 +41,9 @@ export const TabNavigation = ({
           ref={setTabButtonRef(tab)}
           onClick={() => onTabChange(tab)}
           className={`relative font-semibold transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:-translate-y-0.75 ${
-            activeTab === tab ? "text-[#3c9]" : "text-zinc-500 hover:text-zinc-300"
+            activeTab === tab
+              ? "text-[#3c9]"
+              : "text-zinc-500 hover:text-zinc-300"
           }`}
         >
           {tab}

@@ -72,7 +72,6 @@ body {
   background-color: var(--color-zinc-700);
 }
 
-
 ::selection,
 ::-moz-selection {
   background: var(--accent);

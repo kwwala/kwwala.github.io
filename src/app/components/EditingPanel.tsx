@@ -13,7 +13,9 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
     const [activatedCreatorIds, setActivatedCreatorIds] = useState<
       Record<string, boolean>
     >({});
-    const [loadedEmbeds, setLoadedEmbeds] = useState<Record<string, boolean>>({});
+    const [loadedEmbeds, setLoadedEmbeds] = useState<Record<string, boolean>>(
+      {},
+    );
     const [hiddenVideoTitles, setHiddenVideoTitles] = useState<
       Record<string, boolean>
     >({});
@@ -91,7 +93,9 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                     {isActivated && (
                       <div
                         className={`border-t border-white/10 px-4 pb-4 transition-[transform,opacity] duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
-                          isOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                          isOpen
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-3 opacity-0"
                         }`}
                       >
                         <div className="mt-3 flex gap-3 overflow-x-auto pb-2 pr-1">
@@ -141,7 +145,9 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                                 />
                                 <p
                                   className={`pointer-events-none absolute right-0 bottom-0 left-0 z-20 bg-linear-to-t from-black/90 via-black/55 to-transparent px-2 py-2 text-xs leading-snug text-zinc-100 transition-transform duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
-                                    isTitleHidden ? "translate-y-full" : "translate-y-0"
+                                    isTitleHidden
+                                      ? "translate-y-full"
+                                      : "translate-y-0"
                                   }`}
                                 >
                                   {video.title}
