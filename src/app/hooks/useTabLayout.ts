@@ -8,7 +8,7 @@ import {
 
 import type { Tab } from "@/app/types";
 
-const createTabRecord = <TValue,>(value: TValue): Record<Tab, TValue> => ({
+const createTabRecord = <TValue>(value: TValue): Record<Tab, TValue> => ({
   home: value,
   music: value,
   editing: value,
@@ -67,7 +67,10 @@ export const useTabLayout = (activeTab: Tab) => {
     const nextHeight = activePanel.getBoundingClientRect().height;
 
     setPanelHeight((currentHeight) => {
-      if (currentHeight !== null && Math.abs(currentHeight - nextHeight) < 0.5) {
+      if (
+        currentHeight !== null &&
+        Math.abs(currentHeight - nextHeight) < 0.5
+      ) {
         return currentHeight;
       }
 
