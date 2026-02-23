@@ -49,6 +49,8 @@ type PlaylistItem = {
     position?: number;
     channelId?: string;
     channelTitle?: string;
+    videoOwnerChannelId?: string;
+    videoOwnerChannelTitle?: string;
     thumbnails?: ThumbnailSet;
     resourceId?: {
       videoId?: string;
@@ -160,8 +162,12 @@ const fetchAllPlaylistItems = async (
     for (const item of data.items ?? []) {
       const videoId =
         item.contentDetails?.videoId ?? item.snippet?.resourceId?.videoId ?? "";
-      const channelId = item.snippet?.channelId ?? "";
-      const channelTitle = item.snippet?.channelTitle?.trim() || "Unknown channel";
+      const channelId =
+        item.snippet?.videoOwnerChannelId ?? item.snippet?.channelId ?? "";
+      const channelTitle =
+        item.snippet?.videoOwnerChannelTitle?.trim() ||
+        item.snippet?.channelTitle?.trim() ||
+        "Unknown channel";
       const title = item.snippet?.title?.trim() || "Untitled video";
       const position = item.snippet?.position ?? Number.MAX_SAFE_INTEGER;
 
