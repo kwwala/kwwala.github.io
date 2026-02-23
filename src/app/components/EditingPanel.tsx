@@ -54,11 +54,11 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
 
                     setOpenCreatorId(creator.id);
                   }}
-                  className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <a
-                    className="group/creator flex items-center gap-3 pr-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2"
+                    className="group/creator flex items-center gap-3 pr-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2 cursor-pointer"
                     href={creator.channelUrl}
                     target="_blank"
                     rel="noreferrer"
@@ -78,7 +78,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                       isOpen ? "rotate-180" : "rotate-0"
                     }`}
                   >
-                    <FaAngleUp className="mt-3 h-3 w-3" />
+                    <FaAngleUp className="h-3 w-3" />
                   </span>
                 </button>
 

@@ -139,7 +139,7 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
                                     target="_blank"
                                     rel="noreferrer"
                                     aria-label={`Listen on ${label}`}
-                                    className="group/platform inline-flex items-center rounded-sm border border-white/10 bg-black/30 p-2 text-xs tracking-[0.08em] text-zinc-300 transition-colors hover:border-[#3c9] hover:text-[#3c9]"
+                                    className="group/platform inline-flex cursor-pointer items-center rounded-sm border border-white/10 bg-black/30 p-2 text-xs tracking-[0.08em] text-zinc-300 transition-colors hover:border-[#3c9] hover:text-[#3c9]"
                                   >
                                     <PlatformIcon className="h-3.5 w-3.5" />
                                   </a>

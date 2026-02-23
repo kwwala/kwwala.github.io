@@ -33,6 +33,10 @@ body {
   color: var(--fg);
 }
 
+a[href] {
+  cursor: pointer;
+}
+
 /* Cross-browser scrollbar: close to Firefox default (not thin) */
 * {
   scrollbar-width: auto;

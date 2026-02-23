@@ -20,7 +20,7 @@ export const SocialsPanel = forwardRef<HTMLDivElement, SocialsPanelProps>(
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 text-sm text-zinc-200 transition-colors delay-50 duration-200 ease-[cubic-bezier(.1,0,0,1)] group-hover:delay-0 group-hover:ease-[cubic-bezier(.1,0,0,1)] group-hover:text-[#3c9]"
+                className="flex cursor-pointer items-center gap-3 text-sm text-zinc-200 transition-colors delay-50 duration-200 ease-[cubic-bezier(.1,0,0,1)] group-hover:delay-0 group-hover:ease-[cubic-bezier(.1,0,0,1)] group-hover:text-[#3c9]"
               >
                 <span className="flex items-center justify-center">
                   <Icon
