@@ -57,7 +57,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                 >
                   <a
                     className="group/creator flex items-center gap-3 pr-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2"
-                    href={`https://www.youtube.com/${creator.channelHandle}`}
+                    href={creator.channelUrl}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -119,7 +119,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                                 {!isEmbedLoaded && (
                                   <div className="absolute inset-0 z-0">
                                     <img
-                                      src={`https://i.ytimg.com/vi/${video.videoId}/hqdefault.jpg`}
+                                      src={video.thumbnailUrl}
                                       alt=""
                                       aria-hidden="true"
                                       className="h-full w-full object-cover"

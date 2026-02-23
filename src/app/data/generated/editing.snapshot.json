@@ -1,0 +1,74 @@
+{
+  "playlistId": "PLlwe9mu279CgLWky8z6HyxXBYaNrifyfi",
+  "generatedAt": "2026-02-23T00:00:00.000Z",
+  "creators": [
+    {
+      "id": "MRSOSYT1",
+      "name": "MRSOSYT",
+      "channelId": "MRSOSYT1",
+      "channelUrl": "https://www.youtube.com/@MRSOSYT1",
+      "avatarUrl": "https://yt3.googleusercontent.com/9rXoIv7xNSeATFMUrNN0phjKfGkF25mCH08dbqThenss_1fSFefvRWkCivIjnNn-Ihl8OjtFgHw=s160-c-k-c0x00ffffff-no-rj",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLlwe9mu279CgLWky8z6HyxXBYaNrifyfi",
+      "videos": [
+        {
+          "id": "MRSOSYT1-dQw4w9WgXcQ-0",
+          "title": "Video title 01",
+          "videoId": "dQw4w9WgXcQ",
+          "thumbnailUrl": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+          "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "position": 0
+        },
+        {
+          "id": "MRSOSYT1-M7lc1UVf-VE-1",
+          "title": "Video title 02",
+          "videoId": "M7lc1UVf-VE",
+          "thumbnailUrl": "https://i.ytimg.com/vi/M7lc1UVf-VE/hqdefault.jpg",
+          "videoUrl": "https://www.youtube.com/watch?v=M7lc1UVf-VE",
+          "position": 1
+        },
+        {
+          "id": "MRSOSYT1-aqz-KE-bpKQ-2",
+          "title": "Video title 03",
+          "videoId": "aqz-KE-bpKQ",
+          "thumbnailUrl": "https://i.ytimg.com/vi/aqz-KE-bpKQ/hqdefault.jpg",
+          "videoUrl": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+          "position": 2
+        }
+      ]
+    },
+    {
+      "id": "creator-template-2",
+      "name": "Creator 02",
+      "channelId": "creator-template-2",
+      "channelUrl": "https://www.youtube.com/@creator02",
+      "avatarUrl": "https://placehold.co/96x96/141414/ebebeb?text=C2",
+      "playlistUrl": "https://www.youtube.com/playlist?list=PLlwe9mu279CgLWky8z6HyxXBYaNrifyfi",
+      "videos": [
+        {
+          "id": "creator-template-2-ScMzIvxBSi4-3",
+          "title": "Video title 04",
+          "videoId": "ScMzIvxBSi4",
+          "thumbnailUrl": "https://i.ytimg.com/vi/ScMzIvxBSi4/hqdefault.jpg",
+          "videoUrl": "https://www.youtube.com/watch?v=ScMzIvxBSi4",
+          "position": 3
+        },
+        {
+          "id": "creator-template-2-sBws8MSXN7A-4",
+          "title": "Video title 05",
+          "videoId": "sBws8MSXN7A",
+          "thumbnailUrl": "https://i.ytimg.com/vi/sBws8MSXN7A/hqdefault.jpg",
+          "videoUrl": "https://www.youtube.com/watch?v=sBws8MSXN7A",
+          "position": 4
+        },
+        {
+          "id": "creator-template-2-ysz5S6PUM-U-5",
+          "title": "Video title 06",
+          "videoId": "ysz5S6PUM-U",
+          "thumbnailUrl": "https://i.ytimg.com/vi/ysz5S6PUM-U/hqdefault.jpg",
+          "videoUrl": "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+          "position": 5
+        }
+      ]
+    }
+  ]
+}

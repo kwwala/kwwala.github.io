@@ -12,6 +12,9 @@ export type CreatorVideo = {
   id: string;
   title: string;
   videoId: string;
+  thumbnailUrl: string;
+  videoUrl: string;
+  position: number;
 };
 
 export type MusicPlatform =
@@ -34,7 +37,8 @@ export type Song = {
 export type EditingCreator = {
   id: string;
   name: string;
-  channelHandle: string;
+  channelId: string;
+  channelUrl: string;
   avatarUrl: string;
   playlistUrl: string;
   videos: CreatorVideo[];
