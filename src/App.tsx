@@ -30,7 +30,7 @@ function App() {
       <div className="relative z-10 w-full max-w-3xl font-mono">
         {isNotFound ? (
           <section className="m-auto w-fit">
-            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+            <p className="text-xs tracking-[0.2em] text-zinc-500">
               error
             </p>
             <h1 className="text-3xl font-semibold tracking-[0.12em] text-[#3c9] sm:text-4xl">
@@ -50,7 +50,7 @@ function App() {
               how about{" "}
               <a
                 href="/"
-                className="p-1 pl-0 text-zinc-400 tracking-[0.16em] duration-200 hover:text-[#3c9] transition-colors"
+                className="w-fit cursor-pointer text-sm text-zinc-500 transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:pl-2 hover:text-[#3c9]"
               >
                 going back home?
               </a>
