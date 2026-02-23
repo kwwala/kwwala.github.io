@@ -44,7 +44,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                       alt={creator.name}
                       className="h-10 w-10 rounded-full border border-white/20 object-cover transition-colors group-hover/creator:border-[#3c9] group-focus-visible/creator:border-[#3c9]"
                     />
-                    <span className="text-sm font-bold text-zinc-100 transition-colors group-hover/creator:text-[#3c9] group-focus-visible/creator:text-[#3c9]">
+                    <span className="relative inline-block text-sm font-bold text-zinc-100 transition-colors duration-200 ease-[cubic-bezier(.1,0,0,1)] after:pointer-events-none after:absolute after:-bottom-0.25 after:left-0 after:h-0.5 after:w-0 after:bg-[#3c9] after:transition-[width] after:duration-200 after:ease-[cubic-bezier(.1,0,0,1)] group-hover/creator:text-[#3c9] group-focus-visible/creator:text-[#3c9] group-hover/creator:after:w-full group-focus-visible/creator:after:w-full">
                       {creator.name}
                     </span>
                   </a>
