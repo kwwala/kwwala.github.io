@@ -32,31 +32,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                 key={creator.id}
                 className="rounded-md border border-white/10 bg-black/25 transition-colors hover:border-[#3c9]"
               >
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (isOpen) {
-                      setOpenCreatorId(null);
-                      return;
-                    }
-
-                    if (!isActivated) {
-                      setActivatedCreatorIds((prev) => ({
-                        ...prev,
-                        [creator.id]: true,
-                      }));
-                      setOpenCreatorId(null);
-                      window.requestAnimationFrame(() => {
-                        setOpenCreatorId(creator.id);
-                      });
-                      return;
-                    }
-
-                    setOpenCreatorId(creator.id);
-                  }}
-                  className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left cursor-pointer"
-                  aria-expanded={isOpen}
-                >
+                <div className="flex w-full items-center justify-between gap-4 px-4 py-3">
                   <a
                     className="group/creator flex items-center gap-3 pr-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2 cursor-pointer"
                     href={creator.channelUrl}
@@ -72,15 +48,42 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                       {creator.name}
                     </span>
                   </a>
-                  <span
-                    aria-hidden="true"
-                    className={`text-zinc-500 duration-300 ease-[cubic-bezier(.1,0,0,1)] ${
-                      isOpen ? "rotate-180" : "rotate-0"
-                    }`}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (isOpen) {
+                        setOpenCreatorId(null);
+                        return;
+                      }
+
+                      if (!isActivated) {
+                        setActivatedCreatorIds((prev) => ({
+                          ...prev,
+                          [creator.id]: true,
+                        }));
+                        setOpenCreatorId(null);
+                        window.requestAnimationFrame(() => {
+                          setOpenCreatorId(creator.id);
+                        });
+                        return;
+                      }
+
+                      setOpenCreatorId(creator.id);
+                    }}
+                    className="cursor-pointer rounded-xl  p-2 text-zinc-500 transition-colors duration-300 ease-[cubic-bezier(.1,0,0,1)] hover:text-[#3c9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2 border borde border-transparent hover:border-[#3c9] focus-visible:border-[#3c9]"
+                    aria-expanded={isOpen}
+                    aria-label={`${isOpen ? "Close" : "Open"} ${creator.name} videos`}
                   >
-                    <FaAngleUp className="h-3 w-3" />
-                  </span>
-                </button>
+                    <span
+                      aria-hidden="true"
+                      className={`block duration-300 ease-[cubic-bezier(.1,0,0,1)] ${
+                        isOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    >
+                      <FaAngleUp className="h-3 w-3" />
+                    </span>
+                  </button>
+                </div>
 
                 <div
                   className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.1,0,0,1)] ${

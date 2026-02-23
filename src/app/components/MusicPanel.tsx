@@ -34,46 +34,49 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
                 key={song.id}
                 className="rounded-md border border-white/10 bg-black/25 transition-colors hover:border-[#3c9]"
               >
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (isOpen) {
-                      setOpenSongId(null);
-                      return;
-                    }
-
-                    if (!isActivated) {
-                      setActivatedSongIds((prev) => ({
-                        ...prev,
-                        [song.id]: true,
-                      }));
-                      setOpenSongId(null);
-                      window.requestAnimationFrame(() => {
-                        setOpenSongId(song.id);
-                      });
-                      return;
-                    }
-
-                    setOpenSongId(song.id);
-                  }}
-                  className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left"
-                  aria-expanded={isOpen}
-                >
+                <div className="flex w-full items-center justify-between gap-4 px-4 py-3">
                   <p className="text-sm font-semibold tracking-[0.04em] text-zinc-100">
                     {song.title}
                     {showRemixInHeader && (
                       <span className="text-zinc-400"> {displayRemix}</span>
                     )}
                   </p>
-                  <span
-                    aria-hidden="true"
-                    className={`text-zinc-500 duration-300 ease-[cubic-bezier(.1,0,0,1)] ${
-                      isOpen ? "rotate-180" : "rotate-0"
-                    }`}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (isOpen) {
+                        setOpenSongId(null);
+                        return;
+                      }
+
+                      if (!isActivated) {
+                        setActivatedSongIds((prev) => ({
+                          ...prev,
+                          [song.id]: true,
+                        }));
+                        setOpenSongId(null);
+                        window.requestAnimationFrame(() => {
+                          setOpenSongId(song.id);
+                        });
+                        return;
+                      }
+
+                      setOpenSongId(song.id);
+                    }}
+                    className="cursor-pointer rounded-xl border border-transparent p-2 text-zinc-500 transition-colors duration-300 ease-[cubic-bezier(.1,0,0,1)] hover:border-[#3c9] hover:text-[#3c9] focus-visible:border-[#3c9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2"
+                    aria-expanded={isOpen}
+                    aria-label={`${isOpen ? "Close" : "Open"} ${song.title}`}
                   >
-                    <FaAngleUp className="h-3 w-3" />
-                  </span>
-                </button>
+                    <span
+                      aria-hidden="true"
+                      className={`block duration-300 ease-[cubic-bezier(.1,0,0,1)] ${
+                        isOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    >
+                      <FaAngleUp className="h-3 w-3" />
+                    </span>
+                  </button>
+                </div>
 
                 <div
                   className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
