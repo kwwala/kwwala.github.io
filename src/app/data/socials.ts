@@ -10,7 +10,7 @@ import {
   TbBrandYoutube,
 } from "react-icons/tb";
 
-import type { SocialLink } from "../types";
+import type { SocialLink } from "@/app/types";
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {

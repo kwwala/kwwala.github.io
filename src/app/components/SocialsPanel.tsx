@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-import { SOCIAL_LINKS } from "../data/socials";
+import { SOCIAL_LINKS } from "@/app/data/socials";
 
 type SocialsPanelProps = {
   className: string;

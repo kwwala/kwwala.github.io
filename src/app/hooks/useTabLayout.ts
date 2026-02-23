@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 
-import type { Tab } from "../types";
+import type { Tab } from "@/app/types";
 
 const createTabRecord = <TValue,>(value: TValue): Record<Tab, TValue> => ({
   home: value,

@@ -7,7 +7,7 @@ import {
   TbBrandYoutube,
 } from "react-icons/tb";
 
-import type { MusicPlatform, Song } from "../types";
+import type { MusicPlatform, Song } from "@/app/types";
 
 export const SONGS: Song[] = [
   {

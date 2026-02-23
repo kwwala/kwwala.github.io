@@ -1,7 +1,7 @@
 import type { RefObject } from "react";
 
-import { ALL_TABS } from "../constants/tabs";
-import type { Tab } from "../types";
+import { ALL_TABS } from "@/app/constants/tabs";
+import type { Tab } from "@/app/types";
 
 type TabNavigationProps = {
   activeTab: Tab;

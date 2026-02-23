@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { pathToTab, tabToPath, tabToTitle } from "../constants/tabs";
-import type { Tab } from "../types";
+import { pathToTab, tabToPath, tabToTitle } from "@/app/constants/tabs";
+import type { Tab } from "@/app/types";
 
 export const useTabRouting = () => {
   const [activeTab, setActiveTab] = useState<Tab>(() =>

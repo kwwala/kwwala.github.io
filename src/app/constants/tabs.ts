@@ -1,4 +1,4 @@
-import type { Tab } from "../types";
+import type { Tab } from "@/app/types";
 
 export const ALL_TABS: Tab[] = ["home", "music", "editing", "socials"];
 

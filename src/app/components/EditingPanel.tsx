@@ -1,7 +1,7 @@
 import { forwardRef, useState } from "react";
 import { FaAngleUp } from "react-icons/fa6";
 
-import { EDITING_CREATORS } from "../data/editing";
+import { EDITING_CREATORS } from "@/app/data/editing";
 
 type EditingPanelProps = {
   className: string;

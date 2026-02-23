@@ -1,11 +1,11 @@
-import { EditingPanel } from "./app/components/EditingPanel";
-import { HomePanel } from "./app/components/HomePanel";
-import { MusicPanel } from "./app/components/MusicPanel";
-import { SocialsPanel } from "./app/components/SocialsPanel";
-import { TabNavigation } from "./app/components/TabNavigation";
-import type { Tab } from "./app/types";
-import { useTabLayout } from "./app/hooks/useTabLayout";
-import { useTabRouting } from "./app/hooks/useTabRouting";
+import { EditingPanel } from "@/app/components/EditingPanel";
+import { HomePanel } from "@/app/components/HomePanel";
+import { MusicPanel } from "@/app/components/MusicPanel";
+import { SocialsPanel } from "@/app/components/SocialsPanel";
+import { TabNavigation } from "@/app/components/TabNavigation";
+import { useTabLayout } from "@/app/hooks/useTabLayout";
+import { useTabRouting } from "@/app/hooks/useTabRouting";
+import type { Tab } from "@/app/types";
 
 const tabPanelClass = (activeTab: Tab, tab: Tab): string => {
   const baseClass =

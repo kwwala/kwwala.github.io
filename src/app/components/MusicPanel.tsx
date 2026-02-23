@@ -1,7 +1,11 @@
 import { forwardRef, useState } from "react";
 import { FaAngleUp } from "react-icons/fa6";
 
-import { MUSIC_PLATFORM_META, MUSIC_PLATFORM_ORDER, SONGS } from "../data/music";
+import {
+  MUSIC_PLATFORM_META,
+  MUSIC_PLATFORM_ORDER,
+  SONGS,
+} from "@/app/data/music";
 
 type MusicPanelProps = {
   className: string;

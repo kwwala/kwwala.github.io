@@ -1,4 +1,4 @@
-import type { EditingCreator } from "../types";
+import type { EditingCreator } from "@/app/types";
 
 export const EDITING_CREATORS: EditingCreator[] = [
   {
