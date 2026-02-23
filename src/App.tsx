@@ -413,7 +413,7 @@ function App() {
     },
     {
       label: "tiktok",
-      href: "https://www.tiktok.com/@imkwwala",
+      href: "https://tiktok.com/@imkwwala",
       icon: TbBrandTiktok,
     },
     {
@@ -428,12 +428,12 @@ function App() {
     },
     {
       label: "bandcamp",
-      href: "https://imkwwala.bandcamp.com",
+      href: "https://kwwala.bandcamp.com",
       icon: TbBrandBandcamp,
     },
     {
       label: "email",
-      href: "mailto:contatokwwala@gmail.com",
+      href: "mailto:imkwwala@gmail.com",
       icon: HiOutlineMail,
     },
   ];
