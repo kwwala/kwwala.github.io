@@ -34,7 +34,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
               >
                 <div className="flex w-full items-center justify-between gap-4 px-4 py-3">
                   <a
-                    className="group/creator flex items-center gap-3 pr-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2 cursor-pointer"
+                    className="link-padding link-underline-parent group/creator flex items-center gap-3 pr-3 text-zinc-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2"
                     href={creator.channelUrl}
                     target="_blank"
                     rel="noreferrer"
@@ -44,7 +44,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                       alt={creator.name}
                       className="h-10 w-10 rounded-full border border-white/20 object-cover transition-colors group-hover/creator:border-[#3c9] group-focus-visible/creator:border-[#3c9]"
                     />
-                    <span className="text-sm font-bold text-zinc-100 transition-colors group-hover/creator:text-[#3c9] group-focus-visible/creator:text-[#3c9]">
+                    <span className="link-underline text-sm font-bold text-zinc-100 transition-colors group-hover/creator:text-[#3c9] group-focus-visible/creator:text-[#3c9]">
                       {creator.name}
                     </span>
                   </a>

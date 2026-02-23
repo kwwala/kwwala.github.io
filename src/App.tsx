@@ -41,7 +41,7 @@ function App() {
               how about{" "}
               <a
                 href="/"
-                className="w-fit cursor-pointer text-sm text-zinc-500 transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:pl-2 hover:text-[#3c9]"
+                className="link-padding link-underline w-fit text-sm text-zinc-500"
               >
                 going back home?
               </a>

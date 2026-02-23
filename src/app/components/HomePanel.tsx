@@ -18,7 +18,7 @@ export const HomePanel = forwardRef<HTMLDivElement, HomePanelProps>(
             event.preventDefault();
             onSelectSocials();
           }}
-          className="text-[] text-zinc-500 w-fit cursor-pointer text-sm transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:text-[#3c9] hover:pl-2"
+          className="link-padding link-underline w-fit text-sm text-zinc-500"
         >
           @imkwwala
         </a>

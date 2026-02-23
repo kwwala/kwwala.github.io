@@ -37,6 +37,67 @@ a[href] {
   cursor: pointer;
 }
 
+.link-padding {
+  --link-padding-start: 0rem;
+  padding-left: var(--link-padding-start);
+  transition:
+    padding-left 200ms cubic-bezier(.1,0,0,1),
+    color 200ms cubic-bezier(.1,0,0,1),
+    border-color 200ms cubic-bezier(.1,0,0,1),
+    background-color 200ms cubic-bezier(.1,0,0,1);
+  transition-delay: 50ms, 50ms, 50ms, 50ms;
+}
+
+.link-padding:hover,
+.link-padding:focus-visible {
+  padding-left: calc(var(--link-padding-start) + 0.5rem);
+  transition-delay: 0ms, 0ms, 0ms, 0ms;
+}
+
+.link-padding.p-2 {
+  --link-padding-start: 0.5rem;
+}
+
+.link-underline {
+  position: relative;
+  text-decoration: none;
+  transition: color 200ms cubic-bezier(.1,0,0,1);
+  transition-delay: 50ms;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms cubic-bezier(.1,0,0,1);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  color: var(--accent);
+}
+
+.link-underline-parent:hover .link-underline::after,
+.link-underline-parent:focus-visible .link-underline::after {
+  transform: scaleX(1);
+}
+
+.link-underline-parent:hover .link-underline,
+.link-underline-parent:focus-visible .link-underline {
+  color: var(--accent);
+}
+
 /* Cross-browser scrollbar: close to Firefox default (not thin) */
 * {
   scrollbar-width: auto;

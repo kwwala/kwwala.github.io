@@ -32,7 +32,7 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
               href="https://soundcloud.com/imkwwala"
               target="_blank"
               rel="noreferrer"
-              className="inline-block cursor-pointer text-sm text-zinc-500 transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:pl-2 hover:text-[#3c9]"
+              className="link-padding link-underline text-sm text-zinc-500"
             >
               soundcloud
             </a>
@@ -46,7 +46,7 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
               href="https://discord.com"
               target="_blank"
               rel="noreferrer"
-              className="inline-block cursor-pointer text-sm text-zinc-500 transition-all duration-200 ease-[cubic-bezier(.1,0,0,1)] hover:pl-2 hover:text-[#3c9]"
+              className="link-padding link-underline text-sm text-zinc-500"
             >
               discord
             </a>
@@ -179,7 +179,7 @@ export const MusicPanel = forwardRef<HTMLDivElement, MusicPanelProps>(
                                     target="_blank"
                                     rel="noreferrer"
                                     aria-label={`Listen on ${label}`}
-                                    className="group/platform inline-flex cursor-pointer items-center rounded-sm border border-white/10 bg-black/30 p-2 text-xs tracking-[0.08em] text-zinc-300 transition-colors hover:border-[#3c9] hover:text-[#3c9]"
+                                    className="link-padding link-underline group/platform inline-flex items-center rounded-sm border border-white/10 bg-black/30 p-2 text-xs tracking-[0.08em] text-zinc-300 transition-colors hover:border-[#3c9] hover:text-[#3c9]"
                                   >
                                     <PlatformIcon className="h-3.5 w-3.5" />
                                   </a>
