@@ -94,17 +94,6 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                           isOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
                         }`}
                       >
-                        <div className="mt-3 flex items-center gap-4 text-xs tracking-[0.08em]">
-                          <a
-                            href={creator.playlistUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-zinc-500 transition-colors hover:text-[#3c9]"
-                          >
-                            playlist
-                          </a>
-                        </div>
-
                         <div className="mt-3 flex gap-3 overflow-x-auto pb-2 pr-1">
                           {creator.videos.map((video) => {
                             const embedKey = `${creator.id}-${video.id}`;
