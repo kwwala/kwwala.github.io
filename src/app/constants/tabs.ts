@@ -16,8 +16,14 @@ const TAB_TITLE_MAP: Record<Tab, string> = {
   socials: "kwwala // socials",
 };
 
-export const pathToTab = (pathname: string): Tab => {
+export const NOT_FOUND_TITLE = "kwwala // 404";
+
+export const pathToTab = (pathname: string): Tab | null => {
   const normalizedPath = pathname.replace(/\/+$/, "") || "/";
+
+  if (normalizedPath === "/") {
+    return "home";
+  }
 
   if (normalizedPath === "/music") {
     return "music";
@@ -31,7 +37,7 @@ export const pathToTab = (pathname: string): Tab => {
     return "editing";
   }
 
-  return "home";
+  return null;
 };
 
 export const tabToPath = (tab: Tab): string => TAB_PATH_MAP[tab];

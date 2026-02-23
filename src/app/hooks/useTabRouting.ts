@@ -1,29 +1,40 @@
 import { useEffect, useState } from "react";
 
-import { pathToTab, tabToPath, tabToTitle } from "@/app/constants/tabs";
+import {
+  NOT_FOUND_TITLE,
+  pathToTab,
+  tabToPath,
+  tabToTitle,
+} from "@/app/constants/tabs";
 import type { Tab } from "@/app/types";
 
 export const useTabRouting = () => {
-  const [activeTab, setActiveTab] = useState<Tab>(() =>
+  const [routeTab, setRouteTab] = useState<Tab | null>(() =>
     pathToTab(window.location.pathname),
   );
 
+  const activeTab = routeTab ?? "home";
+  const isNotFound = routeTab === null;
+
   useEffect(() => {
+    if (routeTab === null) {
+      document.title = NOT_FOUND_TITLE;
+      return;
+    }
+
     const currentPath = window.location.pathname;
-    const nextPath = tabToPath(activeTab);
+    const nextPath = tabToPath(routeTab);
 
     if (currentPath !== nextPath) {
       window.history.pushState(null, "", nextPath);
     }
-  }, [activeTab]);
 
-  useEffect(() => {
-    document.title = tabToTitle(activeTab);
-  }, [activeTab]);
+    document.title = tabToTitle(routeTab);
+  }, [routeTab]);
 
   useEffect(() => {
     const handlePopState = () => {
-      setActiveTab(pathToTab(window.location.pathname));
+      setRouteTab(pathToTab(window.location.pathname));
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -33,5 +44,9 @@ export const useTabRouting = () => {
     };
   }, []);
 
-  return { activeTab, setActiveTab };
+  const setActiveTab = (tab: Tab) => {
+    setRouteTab(tab);
+  };
+
+  return { activeTab, isNotFound, setActiveTab };
 };

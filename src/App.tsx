@@ -1,4 +1,4 @@
-import { EditingPanel } from "@/app/components/EditingPanel";
+﻿import { EditingPanel } from "@/app/components/EditingPanel";
 import { HomePanel } from "@/app/components/HomePanel";
 import { MusicPanel } from "@/app/components/MusicPanel";
 import { SocialsPanel } from "@/app/components/SocialsPanel";
@@ -19,7 +19,7 @@ const tabPanelClass = (activeTab: Tab, tab: Tab): string => {
 };
 
 function App() {
-  const { activeTab, setActiveTab } = useTabRouting();
+  const { activeTab, isNotFound, setActiveTab } = useTabRouting();
   const { navRef, panelHeight, setPanelRef, setTabButtonRef, tabIndicator } =
     useTabLayout(activeTab);
 
@@ -28,38 +28,70 @@ function App() {
       <div className="scanlines pointer-events-none absolute inset-0 opacity-15" />
 
       <div className="relative z-10 w-full max-w-3xl font-mono">
-        <TabNavigation
-          activeTab={activeTab}
-          navRef={navRef}
-          onTabChange={setActiveTab}
-          setTabButtonRef={setTabButtonRef}
-          tabIndicator={tabIndicator}
-        />
+        {isNotFound ? (
+          <section className="m-auto w-fit">
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+              error
+            </p>
+            <h1 className="text-3xl font-semibold tracking-[0.12em] text-[#3c9] sm:text-4xl">
+              404
+            </h1>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-300">
+              we couldn't find the page you're looking for.
+            </p>
+            {/* <button
+              type="button"
+              onClick={() => setActiveTab("home")}
+              className="mt-6 border border-[#3c9]/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#3c9] transition-colors hover:bg-[#3c9]/10"
+            >
+              voltar para home
+            </button> */}
+            <p className="mt-2 text-sm leading-relaxed text-zinc-300">
+              how about{" "}
+              <a
+                href="/"
+                className="p-1 pl-0 text-zinc-400 tracking-[0.16em] duration-200 hover:text-[#3c9] transition-colors"
+              >
+                going back home?
+              </a>
+            </p>
+          </section>
+        ) : (
+          <>
+            <TabNavigation
+              activeTab={activeTab}
+              navRef={navRef}
+              onTabChange={setActiveTab}
+              setTabButtonRef={setTabButtonRef}
+              tabIndicator={tabIndicator}
+            />
 
-        <div
-          className="relative min-h-80 overflow-hidden transition-[height] duration-500 ease-[cubic-bezier(.1,0,0,1)]"
-          style={{
-            ...(panelHeight === null ? {} : { height: `${panelHeight}px` }),
-          }}
-        >
-          <HomePanel
-            ref={setPanelRef("home")}
-            className={tabPanelClass(activeTab, "home")}
-            onSelectSocials={() => setActiveTab("socials")}
-          />
-          <MusicPanel
-            ref={setPanelRef("music")}
-            className={tabPanelClass(activeTab, "music")}
-          />
-          <SocialsPanel
-            ref={setPanelRef("socials")}
-            className={tabPanelClass(activeTab, "socials")}
-          />
-          <EditingPanel
-            ref={setPanelRef("editing")}
-            className={tabPanelClass(activeTab, "editing")}
-          />
-        </div>
+            <div
+              className="relative min-h-80 overflow-hidden transition-[height] duration-500 ease-[cubic-bezier(.1,0,0,1)]"
+              style={{
+                ...(panelHeight === null ? {} : { height: `${panelHeight}px` }),
+              }}
+            >
+              <HomePanel
+                ref={setPanelRef("home")}
+                className={tabPanelClass(activeTab, "home")}
+                onSelectSocials={() => setActiveTab("socials")}
+              />
+              <MusicPanel
+                ref={setPanelRef("music")}
+                className={tabPanelClass(activeTab, "music")}
+              />
+              <SocialsPanel
+                ref={setPanelRef("socials")}
+                className={tabPanelClass(activeTab, "socials")}
+              />
+              <EditingPanel
+                ref={setPanelRef("editing")}
+                className={tabPanelClass(activeTab, "editing")}
+              />
+            </div>
+          </>
+        )}
       </div>
     </main>
   );
