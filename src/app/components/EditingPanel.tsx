@@ -70,7 +70,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
 
                       setOpenCreatorId(creator.id);
                     }}
-                    className="cursor-pointer rounded-xl  p-2 text-zinc-500 transition-colors duration-300 ease-[cubic-bezier(.1,0,0,1)] hover:text-[#3c9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2 border borde border-transparent hover:border-[#3c9] focus-visible:border-[#3c9]"
+                    className="cursor-pointer rounded-xl border border-white/10 p-2 text-zinc-500 transition-colors duration-300 ease-[cubic-bezier(.1,0,0,1)] hover:border-[#3c9] hover:text-[#3c9] focus-visible:border-[#3c9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3c9] focus-visible:ring-offset-2"
                     aria-expanded={isOpen}
                     aria-label={`${isOpen ? "Close" : "Open"} ${creator.name} videos`}
                   >
