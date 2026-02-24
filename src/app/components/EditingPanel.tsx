@@ -30,7 +30,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
             return (
               <article
                 key={creator.id}
-                className={`rounded-md border border-white/10 bg-black/25 transition-[border-color] duration-300 ease-[cubic-bezier(.1,0,0,1)] hover:border-[#3c9] ${
+                className={`rounded-md border border-white/10 bg-black/25 transition-[border-color, width] duration-500 ease-[cubic-bezier(.1,0,0,1)] hover:border-[#3c9] ${
                   isOpen ? "w-full" : "w-1/3"
                 }`}
               >
