@@ -171,7 +171,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
           {(() => {
             const now = new Date();
             return (
-              <p className="text-right text-sm text-zinc-800">
+              <p className="text-sm text-zinc-800">
                 last updated on {now.toLocaleDateString("en-UK")} at{" "}
                 {now.toLocaleTimeString("en-UK", {
                   hour: "2-digit",
