@@ -31,7 +31,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
               <article
                 key={creator.id}
                 className={`rounded-md border border-white/10 bg-black/25 transition-[border-color, width] duration-500 ease-[cubic-bezier(.1,0,0,1)] hover:border-[#3c9] ${
-                  isOpen ? "w-full" : "w-1/3"
+                  isOpen ? "w-full" : "w-fit md:w-1/3"
                 }`}
               >
                 <div className="flex w-full items-center justify-between gap-4 px-4 py-3">
@@ -88,10 +88,10 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                 </div>
 
                 <div
-                  className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
+                  className={`grid overflow-hidden transition-[grid-template-rows,opacity,width] duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
                     isOpen
-                      ? "grid-rows-[1fr] opacity-100"
-                      : "pointer-events-none grid-rows-[0fr] opacity-0"
+                      ? "w-full grid-rows-[1fr] opacity-100"
+                      : "pointer-events-none w-0 grid-rows-[0fr] opacity-0"
                   }`}
                 >
                   <div className="min-h-0 overflow-hidden">
