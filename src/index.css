@@ -94,6 +94,11 @@ a[href] {
   animation: ticker 18s linear infinite;
 }
 
+.loading-line {
+  animation: loading-line 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: left, width;
+}
+
 @keyframes design-fade {
   from {
     opacity: 0;
@@ -113,5 +118,22 @@ a[href] {
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes loading-line {
+  0% {
+    left: 0;
+    width: 0;
+  }
+
+  55% {
+    left: 0;
+    width: 100%;
+  }
+
+  100% {
+    left: 100%;
+    width: 0;
   }
 }

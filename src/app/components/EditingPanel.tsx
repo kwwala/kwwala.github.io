@@ -114,40 +114,46 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                                 key={embedKey}
                                 className="group relative w-80 shrink-0 overflow-hidden rounded-md border border-white/10 bg-black/40 transition-colors hover:border-[#3c9]"
                               >
-                                {!isEmbedLoaded && (
-                                  <div className="absolute inset-0 z-0">
-                                    <img
-                                      src={video.thumbnailUrl}
-                                      alt=""
-                                      aria-hidden="true"
-                                      className="h-full w-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-black/30" />
-                                  </div>
-                                )}
-                                <iframe
-                                  src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&modestbranding=1`}
-                                  title={video.title}
-                                  loading="lazy"
-                                  allow="web-share"
-                                  referrerPolicy="strict-origin-when-cross-origin"
-                                  allowFullScreen
-                                  onLoad={() => {
-                                    setLoadedEmbeds((prev) => ({
-                                      ...prev,
-                                      [embedKey]: true,
-                                    }));
-                                    setHiddenVideoTitles((prev) => ({
-                                      ...prev,
-                                      [embedKey]: true,
-                                    }));
-                                  }}
-                                  className={`relative z-10 h-45 w-full border-0 transition-opacity duration-300 ${
-                                    isEmbedLoaded
-                                      ? "opacity-100"
-                                      : "pointer-events-none opacity-0"
-                                  }`}
-                                />
+                                <div className="relative h-45 w-full">
+                                  {!isEmbedLoaded && (
+                                    <>
+                                      <div className="absolute inset-0 z-0">
+                                        <img
+                                          src={video.thumbnailUrl}
+                                          alt=""
+                                          aria-hidden="true"
+                                          className="h-full w-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-black/45" />
+                                      </div>
+                                      <div className="absolute right-0 bottom-0 left-0 z-40 h-0.5 bg-white/20" />
+                                      <div className="loading-line absolute bottom-0 left-0 z-40 h-1 w-full bg-zinc-500" />
+                                    </>
+                                  )}
+                                  <iframe
+                                    src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&modestbranding=1`}
+                                    title={video.title}
+                                    loading="lazy"
+                                    allow="web-share"
+                                    referrerPolicy="strict-origin-when-cross-origin"
+                                    allowFullScreen
+                                    onLoad={() => {
+                                      setLoadedEmbeds((prev) => ({
+                                        ...prev,
+                                        [embedKey]: true,
+                                      }));
+                                      setHiddenVideoTitles((prev) => ({
+                                        ...prev,
+                                        [embedKey]: true,
+                                      }));
+                                    }}
+                                    className={`relative z-10 h-45 w-full border-0 transition-opacity duration-300 ${
+                                      isEmbedLoaded
+                                        ? "opacity-100"
+                                        : "pointer-events-none opacity-0"
+                                    }`}
+                                  />
+                                </div>
                                 <p
                                   className={`pointer-events-none absolute right-0 bottom-0 left-0 z-20 bg-linear-to-t from-black/90 via-black/55 to-transparent px-2 py-2 text-xs leading-snug text-zinc-100 transition-transform duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
                                     isTitleHidden
