@@ -1,7 +1,7 @@
 import { forwardRef, useState } from "react";
 import { FaAngleUp } from "react-icons/fa6";
 
-import { EDITING_CREATORS } from "@/app/data/editing";
+import { EDITING_CREATORS, EDITING_GENERATED_AT } from "@/app/data/editing";
 
 type EditingPanelProps = {
   className: string;
@@ -175,14 +175,23 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
             );
           })}
           {(() => {
-            const now = new Date();
+            const lastUpdated = new Date(EDITING_GENERATED_AT);
+            const hasValidLastUpdated = !Number.isNaN(lastUpdated.getTime());
+
             return (
               <p className="text-sm text-zinc-800">
-                last updated on {now.toLocaleDateString("en-UK")} at{" "}
-                {now.toLocaleTimeString("en-UK", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
+                {hasValidLastUpdated ? (
+                  <>
+                    last updated on {lastUpdated.toLocaleDateString("en-UK")}{" "}
+                    at{" "}
+                    {lastUpdated.toLocaleTimeString("en-UK", {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </>
+                ) : (
+                  "last updated time unavailable"
+                )}
               </p>
             );
           })()}

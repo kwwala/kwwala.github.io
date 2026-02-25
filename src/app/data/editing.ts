@@ -10,3 +10,4 @@ type EditingSnapshot = {
 const editingSnapshot = snapshot as EditingSnapshot;
 
 export const EDITING_CREATORS: EditingCreator[] = editingSnapshot.creators;
+export const EDITING_GENERATED_AT: string = editingSnapshot.generatedAt;
