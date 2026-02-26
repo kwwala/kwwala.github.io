@@ -210,17 +210,39 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
           {(() => {
             const lastUpdated = new Date(EDITING_GENERATED_AT);
             const hasValidLastUpdated = !Number.isNaN(lastUpdated.getTime());
+            let formattedDate = "";
+            let formattedLocalTime = "";
+            let utcOffsetLabel = "";
+
+            if (hasValidLastUpdated) {
+              formattedDate = lastUpdated.toLocaleDateString("en-UK");
+              formattedLocalTime = lastUpdated.toLocaleTimeString("en-UK", {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+
+              const utcOffsetMinutes = -lastUpdated.getTimezoneOffset();
+              const utcOffsetSign = utcOffsetMinutes >= 0 ? "+" : "-";
+              const utcOffsetAbsoluteMinutes = Math.abs(utcOffsetMinutes);
+              const utcOffsetHours = String(
+                Math.floor(utcOffsetAbsoluteMinutes / 60),
+              ).padStart(2, "0");
+              const utcOffsetRemainingMinutes = String(
+                utcOffsetAbsoluteMinutes % 60,
+              ).padStart(2, "0");
+              const hasUtcMinuteOffset = utcOffsetRemainingMinutes !== "00";
+
+              utcOffsetLabel = `UTC${utcOffsetSign}${utcOffsetHours}${
+                hasUtcMinuteOffset ? `:${utcOffsetRemainingMinutes}` : ""
+              }`;
+            }
 
             return (
               <p className="text-sm text-zinc-800">
                 {hasValidLastUpdated ? (
                   <>
-                    last updated on {lastUpdated.toLocaleDateString("en-UK")}{" "}
-                    at{" "}
-                    {lastUpdated.toLocaleTimeString("en-UK", {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
+                    last updated on {formattedDate} at {formattedLocalTime} (
+                    {utcOffsetLabel})
                   </>
                 ) : (
                   "last updated time unavailable"
