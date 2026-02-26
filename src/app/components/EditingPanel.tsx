@@ -1,22 +1,113 @@
-import { forwardRef, useState } from "react";
+import { memo, forwardRef, useEffect, useRef, useState } from "react";
 import { FaAngleUp } from "react-icons/fa6";
 
 import { EDITING_CREATORS, EDITING_GENERATED_AT } from "@/app/data/editing";
+import type { CreatorVideo } from "@/app/types";
 
 type EditingPanelProps = {
   className: string;
 };
 
+type CreatorVideoCardProps = {
+  video: CreatorVideo;
+};
+
+const CreatorVideoCard = memo(({ video }: CreatorVideoCardProps) => {
+  const [isEmbedLoaded, setIsEmbedLoaded] = useState(false);
+  const [isTitleHidden, setIsTitleHidden] = useState(false);
+  const [shouldLoadEmbed, setShouldLoadEmbed] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      typeof window.IntersectionObserver === "undefined",
+  );
+  const cardRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (shouldLoadEmbed) {
+      return;
+    }
+
+    const cardElement = cardRef.current;
+
+    if (!cardElement) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) {
+          return;
+        }
+
+        setShouldLoadEmbed(true);
+        observer.disconnect();
+      },
+      { rootMargin: "120px" },
+    );
+
+    observer.observe(cardElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [shouldLoadEmbed]);
+
+  return (
+    <article
+      ref={cardRef}
+      className="group relative w-80 shrink-0 overflow-hidden rounded-md border border-white/10 bg-black/40 transition-colors hover:border-[#3c9]"
+    >
+      <div className="relative h-45 w-full">
+        {!isEmbedLoaded && (
+          <>
+            <div className="absolute inset-0 z-0">
+              <img
+                src={video.thumbnailUrl}
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/45" />
+            </div>
+            <div className="absolute right-0 bottom-0 left-0 z-40 h-0.5 bg-white/20" />
+            <div className="loading-line absolute bottom-0 left-0 z-40 h-1 w-full bg-zinc-500" />
+          </>
+        )}
+        {shouldLoadEmbed && (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&modestbranding=1`}
+            title={video.title}
+            loading="lazy"
+            allow="web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            onLoad={() => {
+              setIsEmbedLoaded(true);
+              setIsTitleHidden(true);
+            }}
+            className={`relative z-10 h-45 w-full border-0 transition-opacity duration-300 ${
+              isEmbedLoaded ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          />
+        )}
+      </div>
+      <p
+        className={`pointer-events-none absolute right-0 bottom-0 left-0 z-20 bg-linear-to-t from-black/90 via-black/55 to-transparent px-2 py-2 text-xs leading-snug text-zinc-100 transition-transform duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
+          isTitleHidden ? "translate-y-full" : "translate-y-0"
+        }`}
+      >
+        {video.title}
+      </p>
+    </article>
+  );
+});
+
+CreatorVideoCard.displayName = "CreatorVideoCard";
+
 export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
   ({ className }, ref) => {
     const [openCreatorId, setOpenCreatorId] = useState<string | null>(null);
     const [activatedCreatorIds, setActivatedCreatorIds] = useState<
-      Record<string, boolean>
-    >({});
-    const [loadedEmbeds, setLoadedEmbeds] = useState<Record<string, boolean>>(
-      {},
-    );
-    const [hiddenVideoTitles, setHiddenVideoTitles] = useState<
       Record<string, boolean>
     >({});
 
@@ -106,65 +197,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
                         <div className="mt-3 flex gap-3 overflow-x-auto pb-2 pr-1">
                           {creator.videos.map((video) => {
                             const embedKey = `${creator.id}-${video.id}`;
-                            const isEmbedLoaded = !!loadedEmbeds[embedKey];
-                            const isTitleHidden = !!hiddenVideoTitles[embedKey];
-
-                            return (
-                              <article
-                                key={embedKey}
-                                className="group relative w-80 shrink-0 overflow-hidden rounded-md border border-white/10 bg-black/40 transition-colors hover:border-[#3c9]"
-                              >
-                                <div className="relative h-45 w-full">
-                                  {!isEmbedLoaded && (
-                                    <>
-                                      <div className="absolute inset-0 z-0">
-                                        <img
-                                          src={video.thumbnailUrl}
-                                          alt=""
-                                          aria-hidden="true"
-                                          className="h-full w-full object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-black/45" />
-                                      </div>
-                                      <div className="absolute right-0 bottom-0 left-0 z-40 h-0.5 bg-white/20" />
-                                      <div className="loading-line absolute bottom-0 left-0 z-40 h-1 w-full bg-zinc-500" />
-                                    </>
-                                  )}
-                                  <iframe
-                                    src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&modestbranding=1`}
-                                    title={video.title}
-                                    loading="lazy"
-                                    allow="web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin"
-                                    allowFullScreen
-                                    onLoad={() => {
-                                      setLoadedEmbeds((prev) => ({
-                                        ...prev,
-                                        [embedKey]: true,
-                                      }));
-                                      setHiddenVideoTitles((prev) => ({
-                                        ...prev,
-                                        [embedKey]: true,
-                                      }));
-                                    }}
-                                    className={`relative z-10 h-45 w-full border-0 transition-opacity duration-300 ${
-                                      isEmbedLoaded
-                                        ? "opacity-100"
-                                        : "pointer-events-none opacity-0"
-                                    }`}
-                                  />
-                                </div>
-                                <p
-                                  className={`pointer-events-none absolute right-0 bottom-0 left-0 z-20 bg-linear-to-t from-black/90 via-black/55 to-transparent px-2 py-2 text-xs leading-snug text-zinc-100 transition-transform duration-500 ease-[cubic-bezier(.1,0,0,1)] ${
-                                    isTitleHidden
-                                      ? "translate-y-full"
-                                      : "translate-y-0"
-                                  }`}
-                                >
-                                  {video.title}
-                                </p>
-                              </article>
-                            );
+                            return <CreatorVideoCard key={embedKey} video={video} />;
                           })}
                         </div>
                       </div>

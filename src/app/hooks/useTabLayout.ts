@@ -19,6 +19,7 @@ export const useTabLayout = (activeTab: Tab) => {
   const [tabIndicator, setTabIndicator] = useState({ left: 0, width: 0 });
   const [panelHeight, setPanelHeight] = useState<number | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
+  const panelHeightRafRef = useRef<number | null>(null);
   const tabButtonRefs = useRef<Record<Tab, HTMLButtonElement | null>>(
     createTabRecord(null),
   );
@@ -57,7 +58,7 @@ export const useTabLayout = (activeTab: Tab) => {
     });
   }, [activeTab]);
 
-  const updatePanelHeight = useCallback(() => {
+  const measurePanelHeight = useCallback(() => {
     const activePanel = panelRefs.current[activeTab];
 
     if (!activePanel) {
@@ -78,6 +79,17 @@ export const useTabLayout = (activeTab: Tab) => {
     });
   }, [activeTab]);
 
+  const updatePanelHeight = useCallback(() => {
+    if (panelHeightRafRef.current !== null) {
+      return;
+    }
+
+    panelHeightRafRef.current = window.requestAnimationFrame(() => {
+      panelHeightRafRef.current = null;
+      measurePanelHeight();
+    });
+  }, [measurePanelHeight]);
+
   useLayoutEffect(() => {
     updateTabIndicator();
   }, [updateTabIndicator]);
@@ -96,13 +108,14 @@ export const useTabLayout = (activeTab: Tab) => {
   }, [updatePanelHeight, updateTabIndicator]);
 
   useLayoutEffect(() => {
-    const animationFrame = window.requestAnimationFrame(() => {
-      updatePanelHeight();
-    });
+    updatePanelHeight();
 
     if (typeof ResizeObserver === "undefined") {
       return () => {
-        window.cancelAnimationFrame(animationFrame);
+        if (panelHeightRafRef.current !== null) {
+          window.cancelAnimationFrame(panelHeightRafRef.current);
+          panelHeightRafRef.current = null;
+        }
       };
     }
 
@@ -119,7 +132,10 @@ export const useTabLayout = (activeTab: Tab) => {
     resizeObserver.observe(activePanel);
 
     return () => {
-      window.cancelAnimationFrame(animationFrame);
+      if (panelHeightRafRef.current !== null) {
+        window.cancelAnimationFrame(panelHeightRafRef.current);
+        panelHeightRafRef.current = null;
+      }
       resizeObserver.disconnect();
     };
   }, [activeTab, updatePanelHeight]);
