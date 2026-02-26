@@ -122,7 +122,7 @@ export const EditingPanel = forwardRef<HTMLDivElement, EditingPanelProps>(
               <article
                 key={creator.id}
                 className={`rounded-md border border-white/10 bg-black/25 transition-[border-color, width] duration-500 ease-[cubic-bezier(.1,0,0,1)] hover:border-[#3c9] ${
-                  isOpen ? "w-full" : "w-fit md:w-1/3"
+                  isOpen ? "w-full" : "w-full md:w-1/3"
                 }`}
               >
                 <div className="flex w-full items-center justify-between gap-4 px-4 py-3">
