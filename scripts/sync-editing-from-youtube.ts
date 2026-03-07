@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 
 const DEFAULT_PLAYLIST_ID = "PLlwe9mu279CgLWky8z6HyxXBYaNrifyfi";
-const DEFAULT_MAX_VIDEOS_PER_CREATOR = 24;
+const DEFAULT_MAX_VIDEOS_PER_CREATOR = 12;
 const FALLBACK_AVATAR_URL = "https://placehold.co/96x96/141414/ebebeb?text=YT";
 
 const SNAPSHOT_PATH = resolve(
