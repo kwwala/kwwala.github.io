@@ -1,44 +1,89 @@
-# kwwala homepage
+# [kwwala.github.io](https://kwwala.github.io)
 
-Single-page personal homepage for Kwwala (`@imkwwala`) built with Vite + React + TypeScript + Tailwind + Bun.
+a modern, single-page portfolio website for [kwwala](https://github.com/imkwwala) featuring an interactive tab-based interface with sections for personal info, editing portfolio, music, and socials.
 
-## Scripts
+## features
 
-- `bun install`
-- `bun dev`
-- `bun run build`
-- `bun run lint`
-- `bun run sync:editing`
+- **tab-based navigation** – seamlessly switch between home, editing, music, and socials sections
+- **youtube sync** – automatically synchronizes editing content from youtube playlists
+- **responsive design** – optimized for all device sizes with smooth animations
+- **type-safe** – built with typescript for robust code quality
+- **ci/cd ready** – automated deployment via github actions with fallback support
 
-## Auto Sync for Editing Playlist
+## tech stack
 
-The `editing` section is generated from a public YouTube playlist snapshot:
+- **frontend framework:** react 19 with typescript
+- **build tool:** vite
+- **styling:** tailwind 4
+- **package manager:** bun
+- **icons:** react-icons
+- **deployment:** github pages + github actions
 
-- Default playlist ID: `PLlwe9mu279CgLWky8z6HyxXBYaNrifyfi`
-- Source file used by the app: `src/app/data/generated/editing.snapshot.json`
-- Sync script: `scripts/sync-editing-from-youtube.ts`
+## prerequisites
 
-### GitHub Actions behavior
+- [bun](https://bun.sh) (v1.0 or higher)
+- [git](https://git-scm.com)
 
-The deploy workflow syncs the snapshot:
+## getting started
 
-- on every push to `main`
-- daily at `12:00 UTC` (`09:00 BRT`)
+### 1. clone the repository
 
-If YouTube sync fails (quota/network/key), deployment continues and keeps the
-previous snapshot as fallback.
+```bash
+git clone https://github.com/kwwala/kwwala.github.io.git
+cd kwwala.github.io
+```
 
-### Google Cloud setup (YouTube Data API v3)
+### 2. install dependencies
 
-1. Create a project in Google Cloud Console.
-2. Enable **YouTube Data API v3**.
-3. Create an API key in **APIs & Services > Credentials**.
-4. Restrict the key:
-   - `API restrictions`: YouTube Data API v3
-   - `Application restrictions`: optional (if no fixed IP, keep unrestricted)
-5. In GitHub repository settings:
-   - `Settings > Secrets and variables > Actions > Secrets`
-   - Add `YOUTUBE_API_KEY`
-6. Optional repo variable:
-   - `Settings > Secrets and variables > Actions > Variables`
-   - Add `YOUTUBE_PLAYLIST_ID` (if omitted, default playlist is used)
+```bash
+bun install
+```
+
+### 3. start development server
+
+```bash
+bun dev
+```
+
+### 4. open in browser
+
+navigate to `http://localhost:5173` to see your changes in real-time with hot module replacement.
+
+## available commands
+
+| command                | description                                   |
+| ---------------------- | --------------------------------------------- |
+| `bun dev`              | start development server with hot reload      |
+| `bun run build`        | build for production (outputs to `dist/`)     |
+| `bun run lint`         | run eslint to check code quality              |
+| `bun run sync:editing` | sync editing portfolio from youtube playlists |
+| `bun install`          | install all dependencies                      |
+
+## project structure
+
+```
+src/
+├── app/
+│   ├── components/      # react components (tabs, panels)
+│   ├── constants/       # configuration and constants
+│   ├── data/            # content data and snapshots
+│   └── hooks/           # custom react hooks
+├── assets/              # images and static assets
+├── app.tsx              # main application component
+├── main.tsx             # entry point
+└── index.css            # global styles
+```
+
+## deployment
+
+the project automatically deploys via github actions:
+
+- **on push:** deploys on every push to the `main` branch
+- **scheduled:** daily deployment at ≈12:00 utc (≈09:00 brt)
+- **fallback:** if the youtube sync fails, deployment uses the previous snapshot as fallback
+
+the site is currently hosted on [github pages](https://pages.github.com/).
+
+## license
+
+this project is open source and available under the mit license.
