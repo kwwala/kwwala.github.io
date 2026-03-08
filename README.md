@@ -1,90 +1,89 @@
 # [kwwala.github.io](https://kwwala.github.io)
 
-A modern, single-page portfolio website for [Kwwala](https://github.com/imkwwala) featuring an interactive tab-based interface with sections for personal info, editing portfolio, music, and socials.
+a modern, single-page portfolio website for [kwwala](https://github.com/imkwwala) featuring an interactive tab-based interface with sections for personal info, editing portfolio, music, and socials.
 
-## Features
+## features
 
-- **Tab-based Navigation** – Seamlessly switch between Home, Editing, Music, and Socials sections
-- **YouTube Sync** – Automatically synchronizes editing content from YouTube playlists
-- **Responsive Design** – Optimized for all device sizes with smooth animations
-- **Dark Theme** – Retro-inspired design with scanline effects
-- **Type-Safe** – Built with TypeScript for robust code quality
-- **CI/CD Ready** – Automated deployment via GitHub Actions with fallback support
+- **tab-based navigation** – seamlessly switch between home, editing, music, and socials sections
+- **youtube sync** – automatically synchronizes editing content from youtube playlists
+- **responsive design** – optimized for all device sizes with smooth animations
+- **type-safe** – built with typescript for robust code quality
+- **ci/cd ready** – automated deployment via github actions with fallback support
 
-## Tech Stack
+## tech stack
 
-- **Frontend Framework:** React 19 with TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS 4
-- **Package Manager:** Bun
-- **Icons:** react-icons
-- **Deployment:** GitHub Pages + GitHub Actions
+- **frontend framework:** react 19 with typescript
+- **build tool:** vite
+- **styling:** tailwind 4
+- **package manager:** bun
+- **icons:** react-icons
+- **deployment:** github pages + github actions
 
-## Prerequisites
+## prerequisites
 
-- [Bun](https://bun.sh) (v1.0 or higher)
-- Git
+- [bun](https://bun.sh) (v1.0 or higher)
+- [git](https://git-scm.com)
 
-## Getting Started
+## getting started
 
-### 1. Clone the repository
+### 1. clone the repository
 
 ```bash
 git clone https://github.com/kwwala/kwwala.github.io.git
 cd kwwala.github.io
 ```
 
-### 2. Install dependencies
+### 2. install dependencies
 
 ```bash
 bun install
 ```
 
-### 3. Start development server
+### 3. start development server
 
 ```bash
 bun dev
 ```
 
-### 4. Open in browser
+### 4. open in browser
 
-Navigate to `http://localhost:5173` to see your changes in real-time with hot module replacement.
+navigate to `http://localhost:5173` to see your changes in real-time with hot module replacement.
 
-## Available Commands
+## available commands
 
-| Command                | Description                                   |
+| command                | description                                   |
 | ---------------------- | --------------------------------------------- |
-| `bun dev`              | Start development server with hot reload      |
-| `bun run build`        | Build for production (outputs to `dist/`)     |
-| `bun run lint`         | Run ESLint to check code quality              |
-| `bun run sync:editing` | Sync editing portfolio from YouTube playlists |
-| `bun install`          | Install all dependencies                      |
+| `bun dev`              | start development server with hot reload      |
+| `bun run build`        | build for production (outputs to `dist/`)     |
+| `bun run lint`         | run eslint to check code quality              |
+| `bun run sync:editing` | sync editing portfolio from youtube playlists |
+| `bun install`          | install all dependencies                      |
 
-## Project Structure
+## project structure
 
 ```
 src/
 ├── app/
-│   ├── components/      # React components (tabs, panels)
-│   ├── constants/       # Configuration and constants
-│   ├── data/            # Content data and snapshots
-│   └── hooks/           # Custom React hooks
-├── assets/              # Images and static assets
-├── App.tsx              # Main application component
-├── main.tsx             # Entry point
-└── index.css            # Global styles
+│   ├── components/      # react components (tabs, panels)
+│   ├── constants/       # configuration and constants
+│   ├── data/            # content data and snapshots
+│   └── hooks/           # custom react hooks
+├── assets/              # images and static assets
+├── app.tsx              # main application component
+├── main.tsx             # entry point
+└── index.css            # global styles
 ```
 
-## Deployment
+## deployment
 
-The project automatically deploys via GitHub Actions:
+the project automatically deploys via github actions:
 
-- **On Push:** Deploys on every push to the `main` branch
-- **Scheduled:** Daily deployment at ≈12:00 UTC (≈09:00 BRT)
-- **Fallback:** If YouTube sync fails, deployment uses the previous snapshot as fallback
+- **on push:** deploys on every push to the `main` branch
+- **scheduled:** daily deployment at ≈12:00 utc (≈09:00 brt)
+- **fallback:** if the youtube sync fails, deployment uses the previous snapshot as fallback
 
-The site is hosted on [GitHub Pages](https://pages.github.com/).
+the site is currently hosted on [github pages](https://pages.github.com/).
 
-## License
+## license
 
-This project is open source and available under the MIT License.
+this project is open source and available under the mit license.
