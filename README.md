@@ -30,7 +30,7 @@ A modern, single-page portfolio website for [Kwwala](https://github.com/imkwwala
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/imkwwala/kwwala.github.io.git
+git clone https://github.com/kwwala/kwwala.github.io.git
 cd kwwala.github.io
 ```
 
