@@ -1,4 +1,4 @@
-# kwwala homepage
+# [kwwala.github.io](https://kwwala.github.io)
 
 A modern, single-page portfolio website for [Kwwala](https://github.com/imkwwala) featuring an interactive tab-based interface with sections for personal info, editing portfolio, music, and socials.
 
@@ -65,8 +65,8 @@ Navigate to `http://localhost:5173` to see your changes in real-time with hot mo
 ```
 src/
 ├── app/
-│   ├── components/       # React components (tabs, panels)
-│   ├── constants/        # Configuration and constants
+│   ├── components/      # React components (tabs, panels)
+│   ├── constants/       # Configuration and constants
 │   ├── data/            # Content data and snapshots
 │   └── hooks/           # Custom React hooks
 ├── assets/              # Images and static assets
