@@ -25,8 +25,6 @@ function App() {
 
   return (
     <main className="design-fade relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#070707] px-5 py-12 text-zinc-100 sm:px-10">
-      <div className="scanlines pointer-events-none absolute inset-0 opacity-15" />
-
       <div className="relative z-10 w-full max-w-3xl font-mono">
         {isNotFound ? (
           <section className="m-auto w-fit">
