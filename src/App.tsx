@@ -29,7 +29,7 @@ function App() {
         {isNotFound ? (
           <section className="m-auto w-fit">
             <p className="text-xs tracking-[0.2em] text-zinc-500">error</p>
-            <h1 className="text-3xl font-semibold tracking-[0.12em] text-[#3c9] sm:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-[0.12em] text-zinc-300 sm:text-4xl">
               404
             </h1>
             <p className="mt-3 text-sm leading-relaxed text-zinc-300">
